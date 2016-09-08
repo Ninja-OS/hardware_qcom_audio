@@ -1235,7 +1235,7 @@ int platform_get_snd_device_name_extn(void *platform __unused,
     return 0;
 }
 
-bool platform_check_and_set_playback_backend_cfg(struct audio_device* adev __unused,
+bool platform_check_and_set_capture_backend_cfg (struct audio_device* adev __unused,
                                               struct audio_usecase *usecase __unused,
                                               snd_device_t snd_device __unused)
 {
@@ -1244,6 +1244,10 @@ bool platform_check_and_set_playback_backend_cfg(struct audio_device* adev __unu
 
 bool platform_check_and_set_capture_backend_cfg(struct audio_device* adev __unused,
     struct audio_usecase *usecase __unused, snd_device_t snd_device __unused)
+
+bool platform_check_and_set_playback_backend_cfg(struct audio_device* adev __unused,
+                                              struct audio_usecase *usecase __unused,
+                                              snd_device_t snd_device __unused)
 {
     return false;
 }
@@ -1324,3 +1328,10 @@ int platform_get_mmap_data_fd(void *platform __unused, int fe_dev __unused, int 
 {
     return -ENOSYS;
 }
+int platform_get_default_app_type_v2(void *platform __unused, usecase_type_t type __unused,
+                                     int *app_type __unused)
+{
+    ALOGE("%s: Not implemented", __func__);
+    return -ENOSYS;
+}
+
